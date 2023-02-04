@@ -29,7 +29,7 @@ public class CoinPicker : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("Trash destroyed");
             //SceneManager.LoadScene(ARscene:"ARScene");
-            SceneManager.LoadScene("ARscene");
+    
 
 
         }
