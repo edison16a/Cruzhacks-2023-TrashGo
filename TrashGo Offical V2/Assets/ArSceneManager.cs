@@ -2,11 +2,15 @@
 using UnityEngine;
 
 //These tell our project to use pieces from the Lightship ARDK
+using System.Collections;
+using System.Collections.Generic;
 using Niantic.ARDK.AR;
 using Niantic.ARDK.AR.ARSessionEventArgs;
 using Niantic.ARDK.Utilities;
 using Niantic.ARDK.Utilities.Input.Legacy;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 //Define our main class
 public class ArSceneManager : MonoBehaviour
@@ -25,6 +29,11 @@ public class ArSceneManager : MonoBehaviour
 
     public Camera _mainCamera;  //This will reference the MainCamera in the scene, so the ARDK can leverage the device camera
     IARSession _ARsession;  //An ARDK ARSession is the main piece that manages the AR experience
+
+    public float coin = 0;
+    public TextMeshProUGUI textCoins;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +81,7 @@ public class ArSceneManager : MonoBehaviour
         Destroy(upNext);
 
         variableHolder.trash--;
+        //textCoins.text = variableHolder.trash + "\n " + variableHolder.points;
 
         GameObject newBall;
 
