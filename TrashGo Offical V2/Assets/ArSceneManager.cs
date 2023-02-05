@@ -11,7 +11,14 @@ using Niantic.ARDK.Utilities.Input.Legacy;
 public class ArSceneManager : MonoBehaviour
 {
     //Variables we'll need to reference other objects in our game
-    public GameObject _ballPrefab;  //This will store the Ball Prefab we created earlier, so we can spawn a new Ball whenever we want
+
+    public GameObject _ballPrefab;
+
+    public GameObject _organicTrash;  //This will store the Ball Prefab we created earlier, so we can spawn a new Ball whenever we want
+    public GameObject _trashTrash;
+    public GameObject _recycleTrash;
+    public int randomNum = 1;
+
     public Camera _mainCamera;  //This will reference the MainCamera in the scene, so the ARDK can leverage the device camera
     IARSession _ARsession;  //An ARDK ARSession is the main piece that manages the AR experience
 
@@ -53,9 +60,38 @@ public class ArSceneManager : MonoBehaviour
     private void TouchBegan(Touch touch)
     {
         //Let's spawn a new ball to bounce around our space
-        GameObject newBall = Instantiate(_ballPrefab);  //Spawn a new ball from our Ball Prefab
+
+        randomNum = Random.Range(1,4);
+
+        GameObject newBall;
+
+        switch (randomNum)
+        {
+            case 1:
+                newBall = Instantiate(_organicTrash);  //Spawn a new ball from our Ball Prefab
+                newBall.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                newBall.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+            case 2:
+                newBall = Instantiate(_trashTrash);  //Spawn a new ball from our Ball Prefab
+                newBall.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                newBall.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+            case 3:
+                newBall = Instantiate(_recycleTrash);  //Spawn a new ball from our Ball Prefab
+                newBall.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                newBall.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+            default:
+                newBall = Instantiate(_ballPrefab);  //Spawn a new ball from our Ball Prefab
+                newBall.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                newBall.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+        }
+
+        /*GameObject newBall = Instantiate(_ballPrefab);  //Spawn a new ball from our Ball Prefab
         newBall.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
-        newBall.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;    //Set the position of our new Ball to just in front of our Main Camera
+        newBall.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;*/    //Set the position of our new Ball to just in front of our Main Camera
 
         //Add velocity to our Ball, here we're telling the game to put Force behind the Ball in the direction Forward from our Camera (so, straight ahead)
         Rigidbody rigbod = newBall.GetComponent<Rigidbody>();
