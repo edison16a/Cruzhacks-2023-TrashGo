@@ -9,6 +9,7 @@ TagManager:
   - Bot
   - Ap
   - TrashCan
+  - Enemy
   layers:
   - Default
   - TransparentFX

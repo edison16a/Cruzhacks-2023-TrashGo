@@ -25,9 +25,10 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
 
-        if (_joystick.Horizontal != 0 || _joystick.Vertical !=0)
+        if (_joystick.Vertical != 0 || _joystick.Horizontal != 0)
         {
-            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);        }
+            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+        }
 
 
 

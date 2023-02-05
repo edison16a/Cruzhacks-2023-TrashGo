@@ -16,7 +16,8 @@ public class Respawn : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        player.transform.position = respawnPoint.transform.position;
+        if (other.transform.tag == "Enemy")
+            player.transform.position = respawnPoint.transform.position;
         coin = 0;
         textCoins.text = coin.ToString();
 
