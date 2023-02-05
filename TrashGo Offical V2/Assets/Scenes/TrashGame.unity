@@ -13848,15 +13848,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 749645736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 828613e242aae4a4dbb011b28ef0c438, type: 3}
+  m_Script: {fileID: 11500000, guid: 4deeccb1e7cce9644aa795eb935efcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Yaxis: 0
-  Xaxis: 0
-  RotationSensitivity: 8
-  RotationMin: 0
-  RotationMax: 0
   target: {fileID: 1003611608}
+  distance: 15
+  height: 8
+  damping: 100
+  smoothRotation: 0
+  followBehind: 1
 --- !u!4 &751022219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2246349242916509827, guid: 2d226e59912d0014fbf2646ed5c4b916, type: 3}
