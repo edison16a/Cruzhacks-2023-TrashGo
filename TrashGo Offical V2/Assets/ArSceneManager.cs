@@ -27,6 +27,7 @@ public class ArSceneManager : MonoBehaviour
     {
         //ARSessionFactory helps create our AR Session. Here, we're telling our 'ARSessionFactory' to listen to when a new ARSession is created, then call an 'OnSessionInitialized' function when we get notified of one being created
         ARSessionFactory.SessionInitialized += OnSessionInitialized;
+        randomNum = Random.Range(1, 4);
     }
 
     // Update is called once per frame
@@ -61,7 +62,6 @@ public class ArSceneManager : MonoBehaviour
     {
         //Let's spawn a new ball to bounce around our space
 
-        randomNum = Random.Range(1,4);
 
         GameObject newBall;
 
@@ -98,5 +98,6 @@ public class ArSceneManager : MonoBehaviour
         rigbod.velocity = new Vector3(0f, 0f, 0f);
         float force = 300.0f;
         rigbod.AddForce(_mainCamera.transform.forward * force);
+        randomNum = Random.Range(1, 4);
     }
 }
