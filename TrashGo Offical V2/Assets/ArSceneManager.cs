@@ -168,7 +168,7 @@ public class ArSceneManager : MonoBehaviour
         //Add timer///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        if (variableHolder.trash <= 0)
+        if (variableHolder.trash < 0)
         {
             for(float i = 0f; i < 5f; i += Time.deltaTime)
             {
