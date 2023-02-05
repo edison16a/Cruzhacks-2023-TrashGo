@@ -6,6 +6,7 @@ using Niantic.ARDK.AR;
 using Niantic.ARDK.AR.ARSessionEventArgs;
 using Niantic.ARDK.Utilities;
 using Niantic.ARDK.Utilities.Input.Legacy;
+using UnityEngine.SceneManagement;
 
 //Define our main class
 public class ArSceneManager : MonoBehaviour
@@ -69,6 +70,8 @@ public class ArSceneManager : MonoBehaviour
     {
         //Let's spawn a new ball to bounce around our space
         Destroy(upNext);
+
+        variableHolder.trash--;
 
         GameObject newBall;
 
@@ -151,7 +154,18 @@ public class ArSceneManager : MonoBehaviour
         //upNext.transform.rotation = _mainCamera.transform.rotation + Quaternion.Euler(new Vector3(0.0f, 3.0f, 0.0f));   //Set the rotation of our new Ball
         upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
         upNext.transform.position = Vector3.Lerp((_mainCamera.transform.position + _mainCamera.transform.forward - _mainCamera.transform.up), _mainCamera.transform.position + _mainCamera.transform.forward, EaseOut(time / 1.5f));
+        
+        //Add timer///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+        if (variableHolder.trash <= 0)
+        {
+            for(float i = 0f; i < 5f; i += Time.deltaTime)
+            {
+
+            }
+            SceneManager.LoadScene("TrashGame");
+        }
     }
     private float EaseOut(float k)
     {

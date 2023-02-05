@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SendBack : MonoBehaviour
 {
-
-    public float coin = 0;
-
+    void Start()
+    {
+        textCoins.text = coin.ToString() + "\n " + variableHolder.points;
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        coin++;
-        SceneManager.LoadScene("TrashGame");
-  
+        variableHolder.points++;
     }
 }
+
+/*if (variableHolder.trash <= 0)
+        {
+            SceneManager.LoadScene("TrashGame");
+        }*/
+//SceneManager.LoadScene("TrashGame");

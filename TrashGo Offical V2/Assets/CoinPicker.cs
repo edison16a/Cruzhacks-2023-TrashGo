@@ -17,6 +17,11 @@ public class CoinPicker : MonoBehaviour
 
     public TextMeshProUGUI textCoins;
 
+    void Start()
+    {
+        textCoins.text = coin.ToString() + "\n " + variableHolder.points;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,13 +32,11 @@ public class CoinPicker : MonoBehaviour
             Debug.Log("Collision Completed");
             Debug.Log("Detected tag");
             coin++;
-          textCoins.text = coin.ToString();
+            variableHolder.trash++;
+            textCoins.text = coin.ToString() + "\n " + variableHolder.points;
             Destroy(other.gameObject);
             Debug.Log("Trash destroyed");
             //SceneManager.LoadScene(ARscene:"ARScene");
-    
-
-
         }
  
         
