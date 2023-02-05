@@ -985,9 +985,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ballPrefab: {fileID: 6241715122356566091, guid: aa3f37ee677aca34eb24d7e4766823b6, type: 3}
-  _organicTrash: {fileID: 0}
-  _trashTrash: {fileID: 0}
-  _recycleTrash: {fileID: 0}
+  _organicTrash: {fileID: 2541759316329275183, guid: 53732c7ab2d43d648887e272e64c9ed6, type: 3}
+  _trashTrash: {fileID: 5368121913819556337, guid: e3630e1a6e1d90b428a4ba1e97662476, type: 3}
+  _recycleTrash: {fileID: 6277297020497226710, guid: 17a3c66ddec3d3e42b91c82b5eafb089, type: 3}
   randomNum: 1
   _mainCamera: {fileID: 323276467}
 --- !u!114 &2009742327
