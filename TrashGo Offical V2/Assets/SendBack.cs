@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SendBack : MonoBehaviour
 {
-    void Start()
-    {
-        textCoins.text = coin.ToString() + "\n " + variableHolder.points;
-    }
 
     void OnTriggerEnter(Collider other)
     {
