@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class CoinPicker : MonoBehaviour
 
 
     public float coin = 0;
+  
    
   
 
@@ -25,7 +27,7 @@ public class CoinPicker : MonoBehaviour
             Debug.Log("Collision Completed");
             Debug.Log("Detected tag");
             coin++;
-            textCoins.text = coin.ToString();
+          textCoins.text = coin.ToString();
             Destroy(other.gameObject);
             Debug.Log("Trash destroyed");
             //SceneManager.LoadScene(ARscene:"ARScene");

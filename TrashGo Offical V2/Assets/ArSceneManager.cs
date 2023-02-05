@@ -20,6 +20,8 @@ public class ArSceneManager : MonoBehaviour
     private GameObject upNext;
     public int randomNum = 1;
 
+    private float time = 0f;
+
     public Camera _mainCamera;  //This will reference the MainCamera in the scene, so the ARDK can leverage the device camera
     IARSession _ARsession;  //An ARDK ARSession is the main piece that manages the AR experience
 
@@ -66,7 +68,7 @@ public class ArSceneManager : MonoBehaviour
     private void TouchBegan(Touch touch)
     {
         //Let's spawn a new ball to bounce around our space
-
+        Destroy(upNext);
 
         GameObject newBall;
 
@@ -113,6 +115,7 @@ public class ArSceneManager : MonoBehaviour
 
     private GameObject showUpNext()
     {
+        time = 0f;
         GameObject upNext;
 
         switch (randomNum)
@@ -144,7 +147,14 @@ public class ArSceneManager : MonoBehaviour
 
     private void updateUpNext(GameObject upNext)
     {
-        upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
-        upNext.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+        time += Time.deltaTime;
+        //upNext.transform.rotation = _mainCamera.transform.rotation + Quaternion.Euler(new Vector3(0.0f, 3.0f, 0.0f));   //Set the rotation of our new Ball
+        upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
+        upNext.transform.position = Vector3.Lerp((_mainCamera.transform.position + _mainCamera.transform.forward - _mainCamera.transform.up), _mainCamera.transform.position + _mainCamera.transform.forward, EaseOut(time / 1.5f));
+
+    }
+    private float EaseOut(float k)
+    {
+        return 1f + ((k -= 1f) * k * k);
     }
 }
