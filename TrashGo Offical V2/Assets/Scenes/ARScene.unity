@@ -1005,8 +1005,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -139.71, y: 1014.2}
-  m_SizeDelta: {x: 463.4, y: 241.8}
+  m_AnchoredPosition: {x: -139.71, y: 1074}
+  m_SizeDelta: {x: 463.4, y: 133.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143253251
 MonoBehaviour:
@@ -1191,7 +1191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54, y: 1097}
+  m_AnchoredPosition: {x: 54, y: 1197.7001}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466557250
@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0\n 0"
+  m_text: "\n 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1510,7 +1510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 1099.0028}
+  m_AnchoredPosition: {x: 40, y: 1199.7029}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1803804602
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Trash :
+  m_text: '
 
     Points :'
   m_isRightToLeft: 0
@@ -1703,6 +1703,8 @@ MonoBehaviour:
   _recycleTrash: {fileID: 6277297020497226710, guid: 17a3c66ddec3d3e42b91c82b5eafb089, type: 3}
   randomNum: 1
   _mainCamera: {fileID: 323276467}
+  coin: 0
+  textCoins: {fileID: 1466557250}
 --- !u!114 &2009742327
 MonoBehaviour:
   m_ObjectHideFlags: 0
