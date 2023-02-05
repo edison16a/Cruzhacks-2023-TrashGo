@@ -14,9 +14,10 @@ public class ArSceneManager : MonoBehaviour
 
     public GameObject _ballPrefab;
 
-    public GameObject _organicTrash;  //This will store the Ball Prefab we created earlier, so we can spawn a new Ball whenever we want
+    public GameObject _organicTrash;  //This will store the -Ball- trash Prefab we created earlier, so we can spawn a new Ball whenever we want
     public GameObject _trashTrash;
     public GameObject _recycleTrash;
+    private GameObject upNext;
     public int randomNum = 1;
 
     public Camera _mainCamera;  //This will reference the MainCamera in the scene, so the ARDK can leverage the device camera
@@ -28,11 +29,14 @@ public class ArSceneManager : MonoBehaviour
         //ARSessionFactory helps create our AR Session. Here, we're telling our 'ARSessionFactory' to listen to when a new ARSession is created, then call an 'OnSessionInitialized' function when we get notified of one being created
         ARSessionFactory.SessionInitialized += OnSessionInitialized;
         randomNum = Random.Range(1, 4);
+
+        upNext = showUpNext(); //Spawns the trash which will come next and assigns it to a variable
     }
 
     // Update is called once per frame
     void Update()
     {
+        updateUpNext(upNext);
         //If there is no touch, we're not going to do anything
         if (PlatformAgnosticInput.touchCount <= 0)
         {
@@ -43,6 +47,7 @@ public class ArSceneManager : MonoBehaviour
         var touch = PlatformAgnosticInput.GetTouch(0);
         if (touch.phase == TouchPhase.Began)
         {
+
             TouchBegan(touch);
         }
     }
@@ -98,6 +103,48 @@ public class ArSceneManager : MonoBehaviour
         rigbod.velocity = new Vector3(0f, 0f, 0f);
         float force = 300.0f;
         rigbod.AddForce(_mainCamera.transform.forward * force);
+
+        //Pick a new trash type
         randomNum = Random.Range(1, 4);
+
+        //Show the new trash type
+        upNext = showUpNext();
+    }
+
+    private GameObject showUpNext()
+    {
+        GameObject upNext;
+
+        switch (randomNum)
+        {
+            case 1:
+                upNext = Instantiate(_organicTrash);  //Spawn a new ball from our Ball Prefab
+                upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                upNext.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+            case 2:
+                upNext = Instantiate(_trashTrash);  //Spawn a new ball from our Ball Prefab
+                upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                upNext.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+            case 3:
+                upNext = Instantiate(_recycleTrash);  //Spawn a new ball from our Ball Prefab
+                upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                upNext.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+            default:
+                upNext = Instantiate(_ballPrefab);  //Spawn a new ball from our Ball Prefab
+                upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+                upNext.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
+                break;
+        }
+
+        return upNext;
+    }
+
+    private void updateUpNext(GameObject upNext)
+    {
+        upNext.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new Ball
+        upNext.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;
     }
 }
